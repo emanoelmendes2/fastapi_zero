@@ -10,3 +10,10 @@ def test_read_root_deve_retornar_ok_e_ola_mundo():
     response = client.get("/")
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {"message": "Hello World"}
+
+
+def test_read_html_deve_retornar_ok_e_html():
+    client = TestClient(app)
+    response = client.get("/html")
+    assert response.status_code == HTTPStatus.OK
+    assert "Olá Mundo" in response.text
